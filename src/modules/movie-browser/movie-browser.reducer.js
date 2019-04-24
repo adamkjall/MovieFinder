@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '../common/redux.helpers';
+import movieModalReducer from './movie-modal/movie-modal.reducer';
 import {
   GET_TOP_MOVIES_PENDING,
   GET_TOP_MOVIES_SUCCESS,
@@ -10,11 +11,8 @@ import {
   GET_MOVIE_DETAILS_PENDING,
   GET_MOVIE_DETAILS_SUCCESS,
   GET_MOVIE_DETAILS_ERROR,
-} from '../../constants';
+} from './movie-browser.constants';
 
-const movieModalReducer = createReducer({ isOpen: false }, {
-
-});
 
 const initialStateMovies = {
   isPending: false,
@@ -65,7 +63,8 @@ const movieDetailsReducer = (state = initialStateMovies, action = {}) => {
 const movieBrowserReducer = combineReducers({
   movieModal: movieModalReducer,
   topMovies: topMoviesReducer,
-  searchMovies: searchMovieReducer
+  searchMovies: searchMovieReducer,
+  movieDetails: movieDetailsReducer
 });
 
 export default movieBrowserReducer;

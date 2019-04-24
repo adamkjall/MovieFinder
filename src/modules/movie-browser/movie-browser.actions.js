@@ -9,7 +9,7 @@ import {
   GET_MOVIE_DETAILS_PENDING,
   GET_MOVIE_DETAILS_SUCCESS,
   GET_MOVIE_DETAILS_ERROR,
-} from '../../constants';
+} from './movie-browser.constants';
 
 
 export const getTopMovies = (page) => (dispatch) => {

@@ -10,14 +10,14 @@ const createMovieDbUrl = (relativeUrl, queryParams) => {
   return baseUrl;
 }
 
-export const getTopMovies = async ({ page }) => {
+export const apiTopMovies = async ({ page }) => {
   const fullUrl = createMovieDbUrl('/movie/top_rated', {
     page
   });
   return fetch(fullUrl);
 }
 
-export const searchMovies = async ({ page, query }) => {
+export const apiSearchMovies = async ({ page, query }) => {
   const fullUrl = createMovieDbUrl('/search/movie', {
     page,
     query
@@ -25,7 +25,7 @@ export const searchMovies = async ({ page, query }) => {
   return fetch(fullUrl);
 }
 
-export const getMovieDetails = async ({ movieId }) => {
+export const apiMovieDetails = async ({ movieId }) => {
   const fullUrl = createMovieDbUrl(`/movie/${movieId}`);
   return fetch(fullUrl);
 }

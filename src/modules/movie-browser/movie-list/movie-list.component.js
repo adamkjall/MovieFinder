@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import MovieCard from '../movie-card/movie-card.component';
+import LoaderComponent from '../../common/loader.component';
 
 const styles = {
   movieColumn: {
@@ -8,7 +9,7 @@ const styles = {
   }
 }
 
-const MovieListComponent = ({movies}) => {
+const MovieListComponent = ({movies, isLoading}) => {
   const moviesColumns = movies ? movies.map(movie => (
     <Col style={styles.movieColumn} key={movie.id} xs={12} sm={4} md={3} lg={3}>
       <MovieCard movie={movie} />
@@ -18,6 +19,7 @@ const MovieListComponent = ({movies}) => {
   return (
     <Row>
       {moviesColumns}
+      <LoaderComponent isLoading={isLoading} />
     </Row>
   );
 }

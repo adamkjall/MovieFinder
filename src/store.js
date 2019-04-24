@@ -5,7 +5,7 @@ import movieBrowserReducer from './modules/movie-browser/movie-browser.reducer';
 
 // The root reducer will serve as the parent for all the other reducers.
 // Add module reducers to the root level here
-const rootReducer = combinerReducers({
+const rootReducer = combineReducers({
   movieBrowser: movieBrowserReducer
 });
 

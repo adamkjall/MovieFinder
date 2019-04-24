@@ -18,7 +18,7 @@ const movieModalReducer = createReducer({ isOpen: false }, {
 
 const initialStateMovies = {
   isPending: false,
-  movies: undefined,
+  movies: [],
   error: ''
 }
 
@@ -27,7 +27,8 @@ const topMoviesReducer = (state = initialStateMovies, action = {}) => {
     case GET_TOP_MOVIES_PENDING:
       return Object.assign({}, state, { isPending: true });
     case GET_TOP_MOVIES_SUCCESS:
-      return Object.assign({}, state, { movies: action.payload, isPending: false });
+      console.log('payload', state.movies)
+      return Object.assign({}, state, { movies: [...state.movies, ...action.payload.results], isPending: false });
     case GET_TOP_MOVIES_ERROR:
       return Object.assign({}, state, { error: action.payload, isPending: false });
     default:
@@ -51,7 +52,7 @@ const searchMovieReducer = (state = initialStateMovies, action = {}) => {
 const movieDetailsReducer = (state = initialStateMovies, action = {}) => {
   switch (action.type) {
     case GET_MOVIE_DETAILS_PENDING:
-      return Object.assign({}, state, { isPending: true});
+      return Object.assign({}, state, { isPending: true });
     case GET_MOVIE_DETAILS_SUCCESS:
       return Object.assign({}, state, { movies: action.payload, isPending: false });
     case GET_MOVIE_DETAILS_ERROR:

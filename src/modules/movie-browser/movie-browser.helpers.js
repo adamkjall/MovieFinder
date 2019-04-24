@@ -6,8 +6,8 @@ const updateMoviePictureUrls = (movieResult, width = 300) => ({
   poster_path: `${IMAGE_BASE_URL(width)}${movieResult.poster_path}`
 });
 
-export const getMovieList = (moviesResponse) => {
-  return !!moviesResponse ? ([
-    ...moviesResponse.results.map(movieResult => updateMoviePictureUrls(movieResult))
-  ]) : null;
+export const getMovieList = (movieList) => {
+  return movieList.length ? (
+    movieList.map(movieResult => updateMoviePictureUrls(movieResult))
+  ) : [];
 }

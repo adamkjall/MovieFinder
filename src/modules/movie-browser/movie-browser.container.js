@@ -32,7 +32,6 @@ class MovieBrowser extends React.Component {
       let percentageScrolled = scrollHelpers.getScollDownPercentage(window);
       if (percentageScrolled > 0.8) {
         const nextPage = this.state.currentPage + 1;
-        console.log('nextpage', nextPage)
         this.props.getTopMovies(nextPage);
         this.setState({ currentPage: nextPage })
       }
@@ -42,14 +41,13 @@ class MovieBrowser extends React.Component {
   render() {
     const { topMovies } = this.props;
     const movies = getMovieList(topMovies.movies);
-    console.log(topMovies)
+    
     return (
       <div>
         <AppBar title='Movie Browser' />
         <Container>
           <Row>
             <p>Search will go here</p>
-
           </Row>
           <Row>
             <MovieList movies={movies} isLoading={topMovies.isPending} />

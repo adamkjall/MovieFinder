@@ -10,8 +10,8 @@ const styles = {
 }
 
 const MovieListComponent = ({movies, isLoading}) => {
-  const moviesColumns = movies ? movies.map(movie => (
-    <Col style={styles.movieColumn} key={movie.id} xs={12} sm={4} md={3} lg={3}>
+  const moviesColumns = movies.length ? movies.map((movie, i) => (
+    <Col style={styles.movieColumn} key={i} xs={12} sm={4} md={3} lg={3}>
       <MovieCard movie={movie} />
     </Col>
   )) : null;

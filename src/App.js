@@ -1,15 +1,15 @@
 import React from 'react';
+import MovieBrowser from './modules/movie-browser/movie-browser.container';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <MovieBrowser />
+      </MuiThemeProvider>
+    );
+  }
 }
 
 export default App;

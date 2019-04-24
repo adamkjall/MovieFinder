@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { AppBar } from 'material-ui';
 
 class MovieBrowser extends React.Component {
@@ -7,14 +7,14 @@ class MovieBrowser extends React.Component {
     return (
       <div>
         <AppBar title='Movie Browser' />
-        <Grid>
+        <Container>
           <Row>
             <p>Search will go here</p>
           </Row>
           <Row>
             <p>Movie list will go here</p>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

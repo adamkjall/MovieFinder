@@ -15,7 +15,6 @@ class MovieBrowser extends React.Component {
   render() {
     const { topMovies } = this.props;
     const movies = getMovieList(topMovies.movies);
-    console.log('movies', topMovies)
     return (
       <div>
         <AppBar title='Movie Browser' />
@@ -35,7 +34,7 @@ class MovieBrowser extends React.Component {
 
 export default connect(
   (state) => ({
-    topMovies: state.movieBrowser.topMovies
+    topMovies: state.movieBrowser.topMovies,
   }),
-  {getTopMovies}
+  { getTopMovies }
 )(MovieBrowser);

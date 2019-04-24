@@ -14,8 +14,24 @@ import {
 
 export const getTopMovies = (page) => (dispatch) => {
   dispatch({ type: GET_TOP_MOVIES_PENDING });
-  apiTopMovies({page})
+  apiTopMovies({ page })
     .then(response => response.json())
-    .then(data => dispatch({ type: GET_TOP_MOVIES_SUCCESS, payload: data}))
-    .catch(error => dispatch({ type: GET_TOP_MOVIES_ERROR, payload: error}));
+    .then(data => dispatch({ type: GET_TOP_MOVIES_SUCCESS, payload: data }))
+    .catch(error => dispatch({ type: GET_TOP_MOVIES_ERROR, payload: error }));
+}
+
+export const searchMovies = (page, query) => (dispatch) => {
+  dispatch({ type: SEARCH_MOVIES_PENDING });
+  apiSearchMovies({ page, query })
+    .then(response => response.json())
+    .then(data => dispatch({ type: SEARCH_MOVIES_SUCCESS, payload: data }))
+    .catch(error => dispatch({ type: SEARCH_MOVIES_ERROR, payload: error }));
+}
+
+export const getMovieDetails = (movieId) => (dispatch) => {
+  dispatch({ type: GET_MOVIE_DETAILS_PENDING });
+  apiMovieDetails({ movieId })
+    .then(response => response.json())
+    .then(data => dispatch({ type: GET_MOVIE_DETAILS_SUCCESS, payload: data }))
+    .catch(error => dispatch({ type: GET_MOVIE_DETAILS_ERROR, payload: error }))
 }

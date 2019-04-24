@@ -18,11 +18,11 @@ const movieModalReducer = createReducer({ isOpen: false }, {
 
 const initialStateMovies = {
   isPending: false,
-  topMovies: [],
+  movies: undefined,
   error: ''
 }
 
-const topMoviesReducer = (state=initialStateMovies, action = {}) => {
+const topMoviesReducer = (state = initialStateMovies, action = {}) => {
   switch (action.type) {
     case GET_TOP_MOVIES_PENDING:
       return Object.assign({}, state, { isPending: true });
@@ -35,9 +35,36 @@ const topMoviesReducer = (state=initialStateMovies, action = {}) => {
   }
 }
 
+const searchMovieReducer = (state = initialStateMovies, action = {}) => {
+  switch (action.type) {
+    case SEARCH_MOVIES_PENDING:
+      return Object.assign({}, state, { isPending: true });
+    case SEARCH_MOVIES_SUCCESS:
+      return Object.assign({}, state, { movies: action.payload, isPending: false });
+    case SEARCH_MOVIES_ERROR:
+      return Object.assign({}, state, { error: action.payload, isPending: false });
+    default:
+      return state;
+  }
+}
+
+const movieDetailsReducer = (state = initialStateMovies, action = {}) => {
+  switch (action.type) {
+    case GET_MOVIE_DETAILS_PENDING:
+      return Object.assign({}, state, { isPending: true});
+    case GET_MOVIE_DETAILS_SUCCESS:
+      return Object.assign({}, state, { movies: action.payload, isPending: false });
+    case GET_MOVIE_DETAILS_ERROR:
+      return Object.assign({}, state, { error: action.payload, isPending: false });
+    default:
+      return state;
+  }
+}
+
 const movieBrowserReducer = combineReducers({
   movieModal: movieModalReducer,
-  topMovies: topMoviesReducer
+  topMovies: topMoviesReducer,
+  searchMovies: searchMovieReducer
 });
 
 export default movieBrowserReducer;

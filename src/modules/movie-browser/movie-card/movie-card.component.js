@@ -36,7 +36,7 @@ class MovieCardComponent extends React.Component {
       <Card
         style={styles.card}
         onMouseOver={() => this.setState({ isMouseOver: true })}
-        onMouseOver={() => this.setState({ isMouseOver: false })}
+        onMouseLeave={() => this.setState({ isMouseOver: false })}
       >
         <CardMedia
           style={styles.cardMedia}
@@ -46,7 +46,7 @@ class MovieCardComponent extends React.Component {
             />
           }
         >
-          <img style={styles.bgImage} src={movie.poster_path} />
+          <img style={styles.bgImage} src={movie.poster_path} alt="Movie poster" />
         </CardMedia>
       </Card>
     );

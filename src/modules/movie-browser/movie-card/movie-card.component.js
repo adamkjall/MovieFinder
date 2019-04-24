@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Card, CardTitle, CardMedia } from 'material-ui';
+import {openMovieModal} from '../movie-modal/movie-modal.actions';
 
 const styles = {
   cardTitle: {
@@ -30,13 +32,14 @@ class MovieCardComponent extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, openMovieModal } = this.props;
 
     return (
       <Card
         style={styles.card}
         onMouseOver={() => this.setState({ isMouseOver: true })}
         onMouseLeave={() => this.setState({ isMouseOver: false })}
+        onClick={() => openMovieModal(movie.id)}
       >
         <CardMedia
           style={styles.cardMedia}
@@ -53,4 +56,7 @@ class MovieCardComponent extends React.Component {
   }
 }
 
-export default MovieCardComponent;
+export default connect(
+  () => ({}),
+  { openMovieModal }
+)(MovieCardComponent);

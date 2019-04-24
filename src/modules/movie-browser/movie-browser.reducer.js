@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { createReducer } from '../common/redux.helpers';
 import movieModalReducer from './movie-modal/movie-modal.reducer';
 import {
   GET_TOP_MOVIES_PENDING,
@@ -25,7 +24,6 @@ const topMoviesReducer = (state = initialStateMovies, action = {}) => {
     case GET_TOP_MOVIES_PENDING:
       return Object.assign({}, state, { isPending: true });
     case GET_TOP_MOVIES_SUCCESS:
-      console.log('payload', state.movies)
       return Object.assign({}, state, { movies: [...state.movies, ...action.payload.results], isPending: false });
     case GET_TOP_MOVIES_ERROR:
       return Object.assign({}, state, { error: action.payload, isPending: false });

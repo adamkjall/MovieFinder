@@ -6,7 +6,7 @@ export const keys = {
 export const openMovieModal = (movieId) => {
   return {
     type: keys.OPEN_MOVIE_MODAL,
-    payload: movieId
+    movieId
   };
 }
 

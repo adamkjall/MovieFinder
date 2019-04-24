@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import { AppBar } from 'material-ui';
-import { getTopMovies } from './movie-browser.actions';
+import * as movieActions from './movie-browser.actions';
 import { getMovieList } from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
 import * as scrollHelpers from '../common/scroll.helpers'
+import MovieModal from './movie-modal/movie-modal.container';
 
 class MovieBrowser extends React.Component {
   constructor(props) {
@@ -53,14 +54,17 @@ class MovieBrowser extends React.Component {
             <MovieList movies={movies} isLoading={topMovies.isPending} />
           </Row>
         </Container>
+        <MovieModal />
       </div>
     );
   }
 }
 
 export default connect(
+  // Map nodes in our state to a properties of our component
   (state) => ({
     topMovies: state.movieBrowser.topMovies,
   }),
-  { getTopMovies }
+   // Map action creators to properties of our component
+  { ...movieActions }
 )(MovieBrowser);

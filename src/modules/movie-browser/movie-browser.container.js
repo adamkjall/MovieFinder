@@ -5,11 +5,36 @@ import { AppBar } from 'material-ui';
 import { getTopMovies } from './movie-browser.actions';
 import { getMovieList } from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
+import * as scrollHelpers from '../common/scroll.helpers'
 
 class MovieBrowser extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1
+    };
+    // Binds the handleScroll to this class which 
+    // provides access to MovieBrowser's props
+    this.handleScroll = this.handleScroll.bind(this);
+  }
   componentDidMount() {
-    this.props.getTopMovies(1);
+    window.onscroll = this.handleScroll;
+    this.props.getTopMovies(this.state.currentPage);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    const { topMovies } = this.props;
+    let percentageScrolled = scrollHelpers.getScollDownPercentage(window);
+    if (percentageScrolled > 0.8) {
+      const nextPage = this.state.currentPage + 1;
+      console.log('nextpage', nextPage)
+      this.props.getTopMovies(nextPage);
+      this.setState({currentPage: nextPage})
+    }
   }
 
   render() {

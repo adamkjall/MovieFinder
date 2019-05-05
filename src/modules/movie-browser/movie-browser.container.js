@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { AppBar } from 'material-ui';
 import * as movieActions from './movie-browser.actions';
 import { getMovieList } from './movie-browser.helpers';

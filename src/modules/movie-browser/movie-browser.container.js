@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import SearchAppBar from './movie-appBar/movie-appBar.component';
+import CenteredTabs from './movie-tabs/movie-tabs.component';
 import * as movieActions from './movie-browser.actions';
 import { getMovieList } from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
@@ -47,10 +48,8 @@ class MovieBrowser extends React.Component {
     return (
       <div>
         <SearchAppBar />
+        <CenteredTabs />
         <Container>
-          <Row>
-            <p>Search will go here</p>
-          </Row>
           <Row>
             <MovieList movies={movies} isLoading={topMovies.isPending} />
           </Row>

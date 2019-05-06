@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
-import { AppBar } from 'material-ui';
+import SearchAppBar from './movie-appBar/movie-appBar.component';
 import * as movieActions from './movie-browser.actions';
 import { getMovieList } from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
@@ -21,6 +21,7 @@ class MovieBrowser extends React.Component {
   componentDidMount() {
     window.onscroll = this.handleScroll;
     this.props.getTopMovies(this.state.currentPage);
+    console.log(this.props)
   }
 
   componentWillUnmount() {
@@ -45,7 +46,7 @@ class MovieBrowser extends React.Component {
     
     return (
       <div>
-        <AppBar title='Movie Browser' />
+        <SearchAppBar />
         <Container>
           <Row>
             <p>Search will go here</p>
